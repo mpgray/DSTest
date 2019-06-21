@@ -1,10 +1,9 @@
-import {Component, OnInit, PipeTransform} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { User } from './user';
 import {Observable} from 'rxjs';
 import {FormControl} from '@angular/forms';
-import {DecimalPipe} from '@angular/common';
 import {map, startWith} from 'rxjs/operators';
-
+import {UsersService} from '../services/users.service';
 
 const USERS: User[] = [
   {
@@ -18,26 +17,27 @@ const USERS: User[] = [
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css'],
-  providers: [DecimalPipe]
+  styleUrls: ['./users.component.css']
 })
 
 export class UsersComponent implements OnInit {
 
-  user$: Observable<User[]>;
-  filter = new FormControl('');
+  private user$: Observable<User[]>;
+  private filter = new FormControl('');
 
-  constructor(pipe: DecimalPipe) {
+  constructor() {
     this.user$ = this.filter.valueChanges.pipe(
       startWith(''),
-      map(text => this.search(text, pipe))
+      map(text => this.search(text))
     );
   }
 
   ngOnInit() {
+
   }
 
-  search(text: string, pipe: PipeTransform): User[] {
+
+  search(text: string): User[] {
     return USERS.filter(user => {
       const term = text.toLowerCase();
       return user.name.toLowerCase().includes(term);
