@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {UserDetails} from '../users-details/user-details';
-import {User} from '../users/user';
-import {catchError} from 'rxjs/operators';
+
 
 const URL = 'https://jsonplaceholder.typicode.com/users';
 
@@ -12,12 +11,12 @@ export class UsersService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<UserDetails> {
-    return this.http.get<UserDetails>(URL );
+  getUsers(): Observable<any[]> {
+    return this.http.get<any[]>(URL);
   }
 
-  getUser(id: number): Observable<UserDetails> {
-    return this.http.get<UserDetails>(URL + id);
+  getUser(id: number): Observable<any> {
+    return this.http.get<any>(URL + id);
   }
 
 

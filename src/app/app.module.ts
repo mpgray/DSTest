@@ -9,8 +9,6 @@ import { DsAppComponent } from './app-ds.component';
 import { UsersComponent } from './users/users.component';
 import { UsersDetailsComponent } from './users-details/users-details.component';
 
-
-
 @NgModule({
   declarations: [
     DsAppComponent,
