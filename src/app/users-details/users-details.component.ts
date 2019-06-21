@@ -34,4 +34,5 @@ export class UsersDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
+
 }
