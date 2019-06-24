@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
 import {UsersService, IUser} from '../services/users.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {UsersDetailsComponent} from '../users-details/users-details.component';
@@ -13,10 +12,9 @@ import {UsersDetailsComponent} from '../users-details/users-details.component';
 
 
 export class UsersComponent implements OnInit {
-  names: string[];
 
   users: IUser[];
-  private filter = new FormControl('');
+
 
   constructor(private modalService: NgbModal, private usersService: UsersService) {}
 
