@@ -1,13 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {CommonModule, DecimalPipe} from '@angular/common';
+import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-ds.routing.module';
 
 import { DsAppComponent } from './app-ds.component';
 import { UsersComponent } from './users/users.component';
 import { UsersDetailsComponent } from './users-details/users-details.component';
+import {UsersService} from './services/users.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,13 @@ import { UsersDetailsComponent } from './users-details/users-details.component';
     AppRoutingModule,
     BrowserModule,
     CommonModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
     ReactiveFormsModule
   ],
-  providers: [DecimalPipe],
+  providers: [UsersService],
   bootstrap: [DsAppComponent]
 })
 export class AppModule { }
