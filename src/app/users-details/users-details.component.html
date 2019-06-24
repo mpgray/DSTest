@@ -1,7 +1,7 @@
 <div class="modal-header" *ngIf="userDetails.name">
   <h5 class="modal-title">{{userDetails.name}}</h5>
 </div>
-<div class="modal-body">
+<div class="modal-body" *ngIf="userDetails.id > 0">
   <ngb-tabset>
     <ngb-tab>
       <ng-template ngbTabTitle><b>Location</b></ng-template>
