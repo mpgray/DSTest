@@ -11,7 +11,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 export class UsersDetailsComponent implements OnInit {
   @Input() userId: number;
 
-  private userDetails: IUser;
+  userDetails: IUser;
 
   constructor(private usersService: UsersService, public activeModal: NgbActiveModal) {
 
