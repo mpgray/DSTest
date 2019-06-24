@@ -15,12 +15,10 @@ export class UsersComponent implements OnInit {
 
   users: IUser[];
 
-
   constructor(private modalService: NgbModal, private usersService: UsersService) {}
 
   ngOnInit() {
    this.getUser();
-
   }
 
   getUser() {
