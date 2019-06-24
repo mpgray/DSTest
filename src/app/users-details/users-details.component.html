@@ -1,15 +1,88 @@
-<div class="modal-header">
-  <h4 class="modal-title">Name: {{userDetails.name}} Username: {{userDetails.username}}</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-    <span aria-hidden="true">&times;</span>
-  </button>
+<div class="modal-header" *ngIf="userDetails.name">
+  <h5 class="modal-title">{{userDetails.name}}</h5>
 </div>
 <div class="modal-body">
-  ID: {{userDetails.id}}
-  Name: {{userDetails.name}}
-  Username: {{userDetails.username}}
+  <ngb-tabset>
+    <ngb-tab>
+      <ng-template ngbTabTitle><b>Location</b></ng-template>
+      <ng-template ngbTabContent>
+        <div *ngIf="userDetails.address">
+          <span *ngIf="userDetails.address.street" class="container">
+            <div class="title">Street</div>
+            <div class="data">{{userDetails.address.street}}</div>
+          </span>
+          <span *ngIf="userDetails.address.suite" class="container">
+            <div class="title">Suite</div>
+            <div class="data">{{userDetails.address.suite}}</div>
+          </span>
+          <span *ngIf="userDetails.address.city" class="container">
+            <div class="title">City</div>
+            <div class="data">{{userDetails.address.city}}</div>
+          </span>
+          <span *ngIf="userDetails.address.zipcode" class="container">
+            <div class="title">Zip</div>
+            <div class="data">{{userDetails.address.zipcode}}</div>
+          </span>
+          <span *ngIf="userDetails.address.geo" class="container">
+            <p>
+            <a target="_blank" href="https://maps.google.com/?q={{userDetails.address.geo.lat}},{{userDetails.address.geo.lng}}">
+              <b>Latitude&nbsp;&nbsp;</b> {{userDetails.address.geo.lat}} &nbsp;&nbsp;
+              <b>Longitude&nbsp;&nbsp; </b> {{userDetails.address.geo.lng}}
+            </a>
+            </p>
+          </span>
+          </div>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab>
+      <ng-template ngbTabTitle><b>Company</b></ng-template>
+      <ng-template ngbTabContent>
+        <div *ngIf="userDetails.company">
+          <span *ngIf="userDetails.company.name" class="container">
+            <div class="title">Name</div>
+            <div class="data">{{userDetails.company.name}}</div>
+          </span>
+          <span *ngIf="userDetails.company.catchPhrase" class="container">
+            <div class="title">Catch Phrase</div>
+            <div class="data">{{userDetails.company.catchPhrase}}</div>
+          </span>
+          <span *ngIf="userDetails.company.bs" class="container">
+            <div class="title">BS</div>
+            <div class="data">{{userDetails.company.bs}}</div>
+          </span>
+        </div>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab>
+      <ng-template ngbTabTitle><b><em>Details</em></b></ng-template>
+      <ng-template ngbTabContent>
+        <span *ngIf="userDetails.id" class="container">
+          <div class="title">ID</div>
+          <div class="data">{{userDetails.id}}</div>
+        </span>
+        <span *ngIf="userDetails.username" class="container">
+          <div class="title">Username</div>
+          <div class="data">{{userDetails.username}}</div>
+        </span>
+        <span *ngIf="userDetails.email" class="container">
+          <div class="title">Email</div>
+          <div class="data">{{userDetails.email}}</div>
+        </span>
+        <span *ngIf="userDetails.website" class="container">
+          <div class="title">Website</div>
+          <div class="data">{{userDetails.website}}</div>
+        </span>
+        <span *ngIf="userDetails.phone" class="container">
+          <div class="title">Phone</div>
+          <div class="data">{{userDetails.phone}}</div>
+        </span>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
 </div>
 
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
 </div>
+
+

@@ -1,1 +1,12 @@
+.container {
+  display: flex;
+}
 
+.title {
+  flex: 0 0 30%;
+  font-weight: bold;
+}
+
+.data {
+  flex: 1;
+}
