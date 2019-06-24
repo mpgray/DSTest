@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-ds.routing.module';
@@ -10,12 +10,14 @@ import { UsersComponent } from './users/users.component';
 import { UsersDetailsComponent } from './users-details/users-details.component';
 import {UsersService} from './services/users.service';
 import {HttpClientModule} from '@angular/common/http';
+import { UserSearchComponent } from './user-search/user-search.component';
 
 @NgModule({
   declarations: [
     DsAppComponent,
     UsersComponent,
-    UsersDetailsComponent
+    UsersDetailsComponent,
+    UserSearchComponent
   ],
   imports: [
     AppRoutingModule,
@@ -24,8 +26,7 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule,
-    ReactiveFormsModule
+    NgbModule
   ],
   providers: [UsersService],
   bootstrap: [DsAppComponent]

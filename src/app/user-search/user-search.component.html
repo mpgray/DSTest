@@ -1,0 +1,25 @@
+<div id="search">
+  <ng-template #rt let-r="result" let-t="term" xmlns="http://www.w3.org/1999/html">
+    <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+  </ng-template>
+
+  <input id="typeahead-template" placeholder="Search by Name..." type="text" class="form-control user-form" [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt"
+         [inputFormatter]="formatter" />
+
+  <div *ngIf="model">
+    <a href="#" (click)="details(model.id)" *ngIf="model.id">
+      <span *ngIf="model.name">
+        <b>Name:</b> {{model.name}}
+      </span>
+      <br />
+      <span *ngIf="model.username">
+        <b>Username:</b> {{model.username}}
+      </span>
+      <br />
+      <span *ngIf="model.email">
+        <b>Email:</b> {{model.email}}
+      </span>
+      <br />
+    </a>
+  </div>
+</div>

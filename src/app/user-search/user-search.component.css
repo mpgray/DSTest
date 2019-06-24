@@ -1,0 +1,17 @@
+.user-form {
+  min-width: 150px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.user-form-full-width {
+  width: 100%;
+}
+
+#search {
+  border-radius: 15px 50px;
+  background: gainsboro;
+  padding: 20px;
+  width: 350px;
+}
+

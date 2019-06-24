@@ -11,13 +11,33 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 export class UsersDetailsComponent implements OnInit {
   @Input() userId: number;
 
-  private userDetails: IUser = {
-    'id': 0,
-    'name': '',
-    'username': '',
-    'email': '',
-  };
-  constructor(private usersService: UsersService, public activeModal: NgbActiveModal) { }
+  private userDetails: IUser;
+
+  constructor(private usersService: UsersService, public activeModal: NgbActiveModal) {
+    this.userDetails = {
+      'id': 0,
+      'name': '',
+      'username': '',
+      'email': '',
+      'address': {
+        'street': '',
+        'suite': '',
+        'city': '',
+        'zipcode': '',
+        'geo': {
+          'lat': 0,
+          'lng': 0
+        }
+      },
+      'phone': '',
+      'website': '',
+      'company': {
+        'name': '',
+        'catchPhrase': '',
+        'bs': ''
+      }
+    };
+  }
 
   ngOnInit() {
     this.usersService.getUser(this.userId).subscribe((data: {}) => {

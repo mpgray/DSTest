@@ -1,34 +1,36 @@
-<form>
-  <div class="form-group form-inline">
-    Search by Name: <input class="form-control ml-2" type="text" [formControl]="filter" />
+<div class="card">
+  <div class="card-header">
+    <app-user-search [users]="users"></app-user-search>
   </div>
-</form>
+  <div class="card-body">
 
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th scope="col">#</th>
-    <th scope="col">Name</th>
-    <th scope="col">Username</th>
-    <th scope="col">Email</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let user of users index as i">
-    <th scope="row">
-      {{user.id}}
-    </th>
-    <td>
-      <a href="#?{{user.id}}" (click)="details(user.id)">
-        <ngb-highlight [result]="user.name" [term]="filter.value"></ngb-highlight>
-      </a>
-    </td>
-    <td>
-      {{user.username}}
-    </td>
-    <td>
-      {{user.email}}
-    </td>
-  </tr>
-  </tbody>
-</table>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Username</th>
+        <th scope="col">Email</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users">
+        <th scope="row">
+          {{user.id}}
+        </th>
+        <td>
+          <a href="#" (click)="details(user.id)">
+            {{user.name}}
+          </a>
+        </td>
+        <td>
+          {{user.username}}
+        </td>
+        <td>
+          {{user.email}}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
