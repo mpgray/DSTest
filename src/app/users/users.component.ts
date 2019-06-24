@@ -1,46 +1,50 @@
 import {Component, OnInit} from '@angular/core';
-import { User } from './user';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
-import {UsersService} from '../services/users.service';
-
-const USERS: User[] = [
-  {
-    'id': 1,
-    'name': 'Leanne Graham',
-    'username': 'Bret',
-    'email': 'Sincere@april.biz',
-  }
-];
+import {UsersService, IUser} from '../services/users.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {UsersDetailsComponent} from '../users-details/users-details.component';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
 })
 
-export class UsersComponent implements OnInit {
+export class UsersComponent {
 
-  private user$: Observable<User[]>;
+  private user$: Observable<IUser[]>;
+  private users: IUser[];
   private filter = new FormControl('');
 
-  constructor() {
+  constructor(private modalService: NgbModal, private usersService: UsersService) {
+    this.getUsers();
     this.user$ = this.filter.valueChanges.pipe(
       startWith(''),
       map(text => this.search(text))
+
     );
-  }
-
-  ngOnInit() {
 
   }
 
+  getUsers() {
+    this.usersService.getUsers().subscribe((data: {}) => {
+      this.users = data as IUser[];
+    });
+    this.user$ = of(this.users);
+  }
 
-  search(text: string): User[] {
-    return USERS.filter(user => {
+  search(text: string): IUser[] {
+    return this.users.filter(user => {
       const term = text.toLowerCase();
       return user.name.toLowerCase().includes(term);
     });
+  }
+
+  // Opens the modal for the details pertaining to the user.
+  details(id: number) {
+    const modalRef = this.modalService.open(UsersDetailsComponent);
+    modalRef.componentInstance.userId = id;
   }
 }
