@@ -14,6 +14,8 @@ export class UsersDetailsComponent implements OnInit {
   private userDetails: IUser;
 
   constructor(private usersService: UsersService, public activeModal: NgbActiveModal) {
+
+    // gives userDetails empty values in order to fail gracefully if server data is bad.
     this.userDetails = {
       'id': 0,
       'name': '',
